@@ -1,29 +1,32 @@
 package task4.database.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Table("logins")
+@Entity
+@Table(name = "logins")
 public class Login {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column("access_date")
-    private final LocalDateTime accessDate;
+    @Column(name = "access_date")
+    private LocalDateTime accessDate;
 
-    @Column("user_id")
-    private final Long userId;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @Column("application")
-    private final String application;
+    @Column(name = "application")
+    private String application;
 
     public Login(LocalDateTime accessDate, Long userId, String application) {
         this.accessDate = accessDate;
         this.userId = userId;
         this.application = application;
+    }
+
+    public Login() {
     }
 
     @Override

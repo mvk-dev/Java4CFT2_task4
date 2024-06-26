@@ -1,27 +1,31 @@
 package task4.database.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
-@Table("users")
+@Entity
+@Table(name = "users")
 public class User {
     @Getter
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final String username;
-    private final String fio;
+    private String username;
+    private String fio;
 
-    @MappedCollection(idColumn = "user_id", keyColumn = "id")
+    @OneToMany(targetEntity = Login.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<Login> logins;
 
     public User(String username, String fio) {
         this.username = username;
         this.fio = fio;
+    }
+
+    public User() {
     }
 
     @Override
