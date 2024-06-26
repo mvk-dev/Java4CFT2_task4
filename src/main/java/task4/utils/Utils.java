@@ -8,12 +8,12 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class LogUtils {
+public class Utils {
     public static final String WORKING_DIR = Path.of("").toAbsolutePath() + "\\";
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @SuppressWarnings(value = "unchecked")
-    public static <T> T get(T object) {
+    public static <T> T getLogProxy(T object) {
         Class<T> classObj = (Class<T>) object.getClass();
 
         return (T) Proxy.newProxyInstance(classObj.getClassLoader(),

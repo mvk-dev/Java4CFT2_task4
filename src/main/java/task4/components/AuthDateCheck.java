@@ -4,7 +4,7 @@ import org.springframework.core.annotation.Order;
 import task4.dto.DataContainer;
 import task4.dto.FileRecord;
 import task4.utils.LogTransformation;
-import task4.utils.LogUtils;
+import task4.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class AuthDateCheck implements Consumer<DataContainer<FileRecord>> {
     }
 
     private void writeToLog() {
-        LogUtils.writeToLog(logFileName, "Records with empty Access Date: " + System.lineSeparator() + invalidData, false);
+        Utils.writeToLog(logFileName, "Records with empty Access Date: " + System.lineSeparator() + invalidData, false);
     }
 
     public List<DataContainer<FileRecord>> getInvalidData() {

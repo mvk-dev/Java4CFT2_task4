@@ -8,7 +8,6 @@ import task4.components.AuthDateCheck;
 import task4.components.FioCorrection;
 import task4.dto.DataContainer;
 import task4.dto.FileRecord;
-import task4.utils.LogUtils;
 
 import java.util.Scanner;
 import java.util.function.Consumer;
@@ -18,17 +17,17 @@ public class ApplicationConfig {
 
     @Bean
     Consumer<DataContainer<FileRecord>> getFioCorrection() {
-        return LogUtils.get(new FioCorrection());
+        return new FioCorrection();
     }
 
     @Bean
     Consumer<DataContainer<FileRecord>> getApplicationTypeCheck() {
-        return LogUtils.get(new ApplicationTypeCheck());
+        return new ApplicationTypeCheck();
     }
 
     @Bean
     Consumer<DataContainer<FileRecord>> getAuthDateCheck() {
-        return LogUtils.get(new AuthDateCheck());
+        return new AuthDateCheck();
     }
 
     @Bean
